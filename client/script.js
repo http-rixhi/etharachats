@@ -50,8 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Connect and Initialize Socket Communications Pipeline
     function initializeSocketConnection(profileData) {
+        const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? '' : 'https://your-backend-url.onrender.com';
         // Explicit initialization targeting relative host domain parameters
-        socket = io();
+        socket = io(BACKEND_URL);
 
         // System Handle Connection State Updates
         socket.on('connect', () => {
