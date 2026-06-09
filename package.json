@@ -1,0 +1,21 @@
+{
+  "name": "etharachats",
+  "version": "1.0.0",
+  "description": "A framework-free real-time group chat application using Socket.IO",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "keywords": [
+    "chat",
+    "socket.io",
+    "realtime",
+    "javascript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.8.1"
+  },
+  "type": "commonjs"
+}
