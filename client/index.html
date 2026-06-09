@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EtharaChats - Interactive Group Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <main id="landing-view" class="landing-container">
+        <div class="landing-card animate-fade-in">
+            <h1 class="logo-title">Ethara<span class="gradient-text">Chats</span></h1>
+            <p class="tagline">Experience immediate connectivity. No complex login steps, total style control, real-time sync.</p>
+            <button id="open-join-btn" class="btn btn-primary btn-pulse">Join Live Chat</button>
+        </div>
+    </main>
+
+    <div id="identity-modal" class="modal-overlay hidden">
+        <div class="modal-box animate-scale-up">
+            <h2 class="modal-heading">Identify Yourself</h2>
+            <p class="modal-subtext">Set up your profile handle to display alongside messages inside the room.</p>
+            
+            <form id="join-form" novalidate>
+                <div class="form-group">
+                    <label for="username">Display Profile Name</label>
+                    <input type="text" id="username" autocomplete="off" placeholder="Enter name (min 2 chars)..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Gender Identity</label>
+                    <div class="gender-radio-group">
+                        <label class="gender-tile">
+                            <input type="radio" name="gender" value="Male" checked>
+                            <span class="tile-custom">🙋‍♂️ Male</span>
+                        </label>
+                        <label class="gender-tile">
+                            <input type="radio" name="gender" value="Female">
+                            <span class="tile-custom">🙋‍♀️ Female</span>
+                        </label>
+                        <label class="gender-tile">
+                            <input type="radio" name="gender" value="Other">
+                            <span class="tile-custom">👤 Other</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" id="close-modal-btn" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Enter Room</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="app-view" class="app-container hidden">
+        <header class="app-header">
+            <div class="header-branding">
+                <h2>Ethara<span class="gradient-text">Chats</span></h2>
+                <div class="connection-pill" id="conn-pill">
+                    <span class="indicator-dot"></span>
+                    <span id="conn-status-text">Connected</span>
+                </div>
+            </div>
+            <button id="leave-room-btn" class="btn btn-danger-outline">Disconnect</button>
+        </header>
+
+        <div class="workspace-layout">
+            <aside class="sidebar" id="sidebar-panel">
+                <div class="sidebar-header">
+                    <h3>Active Users (<span id="user-count">0</span>)</h3>
+                </div>
+                <ul class="users-list" id="users-list-box">
+                    </ul>
+            </aside>
+
+            <section class="chat-hub">
+                <div class="messages-container" id="messages-viewport">
+                    </div>
+
+                <form id="message-form" class="message-composer-tray">
+                    <input type="text" id="message-input" autocomplete="off" placeholder="Type your message securely..." maxlength="500">
+                    <button type="submit" class="btn btn-send">
+                        <span>Send</span>
+                        <svg viewBox="0 0 24 24" class="send-icon"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/></svg>
+                    </button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
